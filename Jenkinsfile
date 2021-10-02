@@ -1,6 +1,6 @@
 node {
   stage("Discover reference build") {
     checkout scm
-    discoverGitReferenceBuild defaultBranch: "main"
+    discoverGitReferenceBuild defaultBranch: env.CHANGE_TARGET ? env.CHANGE_TARGET : null, maxCommits: 0, latestBuildIfNotFound: true
   }
 }
